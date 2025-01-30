@@ -8,24 +8,24 @@ Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-fcm-notification = "0.1.1"
+fcm-notification = "0.1.2"
 ```
 
 ## Usage
 
 ```rust
-use fcm_notification::{FcmNotificationService, NotificationPayload};
+use fcm_notification::{FcmNotification, NotificationPayload};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let fcm_service = FcmNotificationService::new("service_account.json")?;
+    let fcm = FcmNotification::new("service_account.json")?;
     let notification = NotificationPayload {
         token: "device-token-here",
         title: "New Like",
         body: "Someone liked your post!",
         data: None,
     };
-    fcm_service.send_notification(&notification).await?;
+    fcm.send_notification(&notification).await?;
     Ok(())
 }
 ```

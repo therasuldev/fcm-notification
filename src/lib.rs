@@ -5,18 +5,18 @@
 //!
 //! # Example
 //! ```rust
-//! use fcm_notification_service::{FcmNotificationService, NotificationPayload};
+//! use fcm_notification::{FcmNotification, NotificationPayload};
 //!
 //! #[tokio::main]
 //! async fn main() -> Result<(), Box<dyn std::error::Error>> {
-//!     let fcm_service = FcmNotificationService::new("service_account.json")?;
+//!     let fcm = FcmNotification::new("service_account.json")?;
 //!     let notification = NotificationPayload {
 //!         token: "device-token-here",
 //!         title: "New Like",
 //!         body: "Someone liked your post!",
 //!         data: None,
 //!     };
-//!     fcm_service.send_notification(&notification).await?;
+//!     fcm.send_notification(&notification).await?;
 //!     Ok(())
 //! }
 //! ```
@@ -66,7 +66,7 @@ pub struct NotificationPayload<'a> {
     pub data: Option<serde_json::Value>,
 }
 
-/// Represents errors that can occur while using the `FcmNotificationService`.
+/// Represents errors that can occur while using the `FcmNotification`.
 ///
 /// This enum provides a unified error type for all operations, including file I/O, JSON parsing,
 /// JWT encoding, HTTP requests, and FCM-specific errors.
@@ -91,13 +91,13 @@ pub enum FcmError {
 /// This struct provides methods to authenticate with Google OAuth2 and send notifications
 /// using the Firebase Cloud Messaging API.
 #[derive(Clone)]
-pub struct FcmNotificationService {
+pub struct FcmNotification {
     service_account: ServiceAccount,
     client: Client,
 }
 
-impl FcmNotificationService {
-    /// Creates a new `FcmNotificationService` instance.
+impl FcmNotification {
+    /// Creates a new `FcmNotification` instance.
     ///
     /// # Arguments
     /// * `config_path` - The path to the Firebase service account JSON file.
