@@ -1,4 +1,3 @@
-
 //! A Rust library for sending Firebase Cloud Messaging (FCM) notifications.
 //!
 //! This crate provides a simple interface to send push notifications using Firebase Cloud Messaging (FCM).
@@ -27,7 +26,7 @@ use jsonwebtoken::{encode, EncodingKey, Header};
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
-use std::{error::Error, fs};
+use std::fs;
 use thiserror::Error;
 
 /// Represents a Firebase service account, loaded from a JSON file.
