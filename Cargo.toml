@@ -1,0 +1,10 @@
+[package]
+name = "fcm-notification"
+version = "0.1.0"
+edition = "2021"
+authors = ["therasuldev <rasul.ramixanov@gmail.com>"]
+description = "This repository provides a Rust implementation for sending push notifications using Firebase Cloud Messaging (FCM)"
+license = "MIT"                                           # Choose an appropriate license
+repository = "https://github.com/therasuldev/fcm-notification" # Optional
+
+[dependencies]
